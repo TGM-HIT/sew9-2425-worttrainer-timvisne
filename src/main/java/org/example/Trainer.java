@@ -35,4 +35,12 @@ public class Trainer {
         incorrect++;
         return false;
     }
+
+    public int getCorrect() {
+        return correct;
+    }
+
+    public int getIncorrect() {
+        return incorrect;
+    }
 }
