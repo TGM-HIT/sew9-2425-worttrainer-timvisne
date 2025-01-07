@@ -26,4 +26,13 @@ public class Trainer {
             this.index = random.nextInt(list.length);
         }
     }
+    public boolean guess(String guess) {
+        if(guess.equals(list[index].getWord())) {
+            correct++;
+            this.selectRandom();
+            return true;
+        }
+        incorrect++;
+        return false;
+    }
 }
