@@ -8,7 +8,13 @@ public class Trainer {
     private int correct;
     private int incorrect;
     public Trainer() {
-
+        WordPair[] wordPairs = {
+                new WordPair("Apfel", "apfel.png"),
+                new WordPair("Birne", "birne.png"),
+                new WordPair("Banane", "banane.png"),
+                new WordPair("Pfirsich", "pfirsich.png"),
+                new WordPair("Zitrone", "zitrone.png")
+        };
     }
 
     public Trainer(WordPair[] list) {
