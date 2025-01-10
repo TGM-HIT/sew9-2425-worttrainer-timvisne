@@ -21,12 +21,16 @@ public class Saver {
     }
 
     public static Trainer loadTrainerFromFile() throws IOException {
-        String filePath = "trainer.json";
+        String filePath = "SAVE.json";
         if (filePath == null || filePath.isEmpty()) {
             throw new IllegalArgumentException("File path cannot be null or empty");
         }
         try (FileReader reader = new FileReader(filePath)) {
             return gson.fromJson(reader, Trainer.class);
+        } catch (IOException e) {
+            Trainer newTrainer = new Trainer();
+            saveTrainerToFile(newTrainer);
+            return newTrainer;
         } catch (JsonSyntaxException e) {
             throw new IOException("Invalid JSON format in file", e);
         }

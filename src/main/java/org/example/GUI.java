@@ -15,6 +15,14 @@ public class GUI {
             trainer = new Trainer();
         }
 
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            try {
+                Saver.saveTrainerToFile(trainer);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Fehler beim Speichern der Trainer-Daten: " + e.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
+            }
+        }));
+
         while (true) {
             trainer.selectRandom();
             WordPair currentPair = trainer.list[trainer.index];
@@ -37,16 +45,10 @@ public class GUI {
             }
 
             boolean isCorrect = trainer.guess(guess.trim());
-            String feedback = isCorrect ? "Richtig!" : "Falsch! Das richtige Wort war: " + correctWord;
+            String feedback = isCorrect ? "Richtig!" : "Falsch!";
             JOptionPane.showMessageDialog(null, feedback, "Ergebnis", JOptionPane.INFORMATION_MESSAGE);
         }
 
-        try {
-            Saver.saveTrainerToFile(trainer);
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Fehler beim Speichern der Trainer-Daten: " + e.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
-        }
-
-        JOptionPane.showMessageDialog(null, "Das Spiel ist beendet. Die Daten wurden gespeichert.", "Spiel beendet", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Das Spiel ist beendet. Die Daten werden gespeichert...", "Spiel beendet", JOptionPane.INFORMATION_MESSAGE);
     }
 }
