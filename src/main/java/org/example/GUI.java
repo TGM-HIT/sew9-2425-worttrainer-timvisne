@@ -29,7 +29,7 @@ public class GUI {
             WordPair currentPair = trainer.list[trainer.index];
             String imageUrl = currentPair.getUrl();
             String correctWord = currentPair.getWord();
-            String resultMessage = "Richtige Antworten: " + trainer.getCorrect() + "\nFalsche Antworten: " + trainer.getIncorrect();
+            String resultMessage = "Correct: " + trainer.getCorrect() + "\nIncorrect: " + trainer.getIncorrect();
 
             ImageIcon icon = null;
             try {
