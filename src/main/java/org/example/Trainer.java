@@ -1,7 +1,11 @@
 package org.example;
 
 import java.util.Random;
-
+/**
+ * Die Trainerklasse
+ * @author timur
+ * @version 2025-01-10
+ */
 public class Trainer {
     WordPair[] list;
     int index = -1;

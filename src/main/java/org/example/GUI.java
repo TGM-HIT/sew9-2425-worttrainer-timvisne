@@ -5,6 +5,11 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * Die Benuzeroberfläche
+ * @author timur
+ * @version 2025-01-10
+ */
 public class GUI {
     private static Trainer trainer;
 
@@ -12,7 +17,7 @@ public class GUI {
         try {
             trainer = Saver.loadTrainerFromFile();
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Fehler beim Laden der Trainer-Daten: " + e.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Fehler Trainer: " + e.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
             trainer = new Trainer();
         }
 
@@ -20,7 +25,7 @@ public class GUI {
             try {
                 Saver.saveTrainerToFile(trainer);
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Fehler beim Speichern der Trainer-Daten: " + e.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Fehler beim Speichern: " + e.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
             }
         }));
 
@@ -39,10 +44,10 @@ public class GUI {
                 Image scaledImage = originalIcon.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH);
                 icon = new ImageIcon(scaledImage);
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Fehler beim Laden des Bildes: " + e.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Fehler: " + e.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
             }
 
-            String message = resultMessage + "\n\nWas ist das Wort für das Bild?";
+            String message = resultMessage + "\n\nWas ist das?";
             String guess = JOptionPane.showInputDialog(null, message, "Wort eingeben", JOptionPane.QUESTION_MESSAGE, icon, null, "").toString();
 
             if (guess == null || guess.trim().isEmpty()) {
@@ -54,6 +59,6 @@ public class GUI {
             JOptionPane.showMessageDialog(null, feedback, "Ergebnis", JOptionPane.INFORMATION_MESSAGE);
         }
 
-        JOptionPane.showMessageDialog(null, "Das Spiel ist beendet. Die Daten werden gespeichert...", "Spiel beendet", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Daten werden gespeichert!", "Spiel beendet", JOptionPane.INFORMATION_MESSAGE);
     }
 }

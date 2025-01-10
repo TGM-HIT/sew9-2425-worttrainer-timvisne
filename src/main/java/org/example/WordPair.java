@@ -1,7 +1,11 @@
 package org.example;
 
 import java.nio.file.Paths;
-
+/**
+ * erstellt wortpaar
+ * @author timur
+ * @version 2025-01-10
+ */
 public class WordPair {
     private String word;
     private String url;

@@ -6,7 +6,11 @@ import com.google.gson.JsonSyntaxException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
+/**
+ * Speichert die Daten
+ * @author timur
+ * @version 2025-01-10
+ */
 public class Saver {
     private static final Gson gson = new Gson();
 
