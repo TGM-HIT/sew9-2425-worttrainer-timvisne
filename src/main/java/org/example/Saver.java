@@ -11,7 +11,7 @@ public class Saver {
     private static final Gson gson = new Gson();
 
     public static void saveTrainerToFile(Trainer trainer) throws IOException {
-        String filePath = "trainer.json";
+        String filePath = "SAVE.json";
         if (trainer == null || filePath == null || filePath.isEmpty()) {
             throw new IllegalArgumentException("Trainer object or file path cannot be null or empty");
         }
