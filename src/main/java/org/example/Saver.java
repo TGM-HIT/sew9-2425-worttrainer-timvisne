@@ -17,7 +17,7 @@ public class Saver {
     public static void saveTrainerToFile(Trainer trainer) throws IOException {
         String filePath = "SAVE.json";
         if (trainer == null || filePath == null || filePath.isEmpty()) {
-            throw new IllegalArgumentException("Trainer object or file path cannot be null or empty");
+            throw new IllegalArgumentException("Trainer not null");
         }
         try (FileWriter writer = new FileWriter(filePath)) {
             gson.toJson(trainer, writer);
@@ -27,7 +27,7 @@ public class Saver {
     public static Trainer loadTrainerFromFile() throws IOException {
         String filePath = "SAVE.json";
         if (filePath == null || filePath.isEmpty()) {
-            throw new IllegalArgumentException("File path cannot be null or empty");
+            throw new IllegalArgumentException("File path null");
         }
         try (FileReader reader = new FileReader(filePath)) {
             return gson.fromJson(reader, Trainer.class);
@@ -36,7 +36,7 @@ public class Saver {
             saveTrainerToFile(newTrainer);
             return newTrainer;
         } catch (JsonSyntaxException e) {
-            throw new IOException("Invalid JSON format in file", e);
+            throw new IOException("Invalid", e);
         }
     }
 }
