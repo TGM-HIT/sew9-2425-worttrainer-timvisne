@@ -1,6 +1,7 @@
 package org.example;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 
@@ -33,10 +34,14 @@ public class GUI {
             ImageIcon icon = null;
             try {
                 URL url = new URL(imageUrl);
-                icon = new ImageIcon(url);
+                ImageIcon originalIcon = new ImageIcon(url);
+
+                Image scaledImage = originalIcon.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+                icon = new ImageIcon(scaledImage);
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Fehler beim Laden des Bildes: " + e.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
             }
+
             String message = resultMessage + "\n\nWas ist das Wort für das Bild?";
             String guess = JOptionPane.showInputDialog(null, message, "Wort eingeben", JOptionPane.QUESTION_MESSAGE, icon, null, "").toString();
 
